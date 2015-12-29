@@ -3,6 +3,7 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var validator = require('../../lib/validator');
+var filter = require('../../lib/filter');
 
 function checkFish(fs) {
   if (!fs.exists('package.json')) {
@@ -46,11 +47,7 @@ module.exports = yeoman.generators.Base.extend({
         message: 'List of devDependencies',
         default: "",
         validate: validator.commaSeparatedList,
-        filter: function(l) {
-          return l.split(",")
-            .map(function(t) { return t.trim(); })
-            .filter(validator.nonEmpty)
-        }
+        filter: filter.commaSeparatedList
       },
       {
         type: 'confirm',
