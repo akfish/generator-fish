@@ -1,3 +1,3 @@
-# require something
+babel = heap.require('gulp-babel')
 
-gulp.task config.coffee.taskName, es6(config.es6.src, config.es6.dst, config.es6.opts)
+gulp.task config.es6.taskName, babel(config.es6.src, config.es6.dst, config.es6.opts)
