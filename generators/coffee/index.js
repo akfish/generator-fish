@@ -9,6 +9,7 @@ module.exports = Fish.buildTask('coffee', ['gulp-coffee'],
     defaultDst: "./lib",
     ignoreSrc: false,
     ignoreDst: false,
+    supportSourceMap: true,
     questions: [{
       type: 'confirm',
       name: 'bare',

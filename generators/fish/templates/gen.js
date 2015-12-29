@@ -9,5 +9,6 @@ module.exports = Fish.buildTask('<%= name %>', <%- JSON.stringify(deps) %>,
     defaultDst: "./lib",
     ignoreSrc: <%= ignoreSrc %>,
     ignoreDst: <%= ignoreDst %>,
+    supportSourceMap: <%= supportSourceMap %>,
     questions: []
   });

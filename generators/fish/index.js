@@ -63,6 +63,12 @@ module.exports = yeoman.generators.Base.extend({
         name: 'ignoreDst',
         message: 'Ignore destination',
         default: false
+      },
+      {
+        type: 'confirm',
+        name: 'supportSourceMap',
+        message: 'Support source map',
+        default: true
       }
     ];
 

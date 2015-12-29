@@ -9,6 +9,7 @@ module.exports = Fish.buildTask('es6', ["gulp-babel"],
     defaultDst: "./lib",
     ignoreSrc: false,
     ignoreDst: false,
+    supportSourceMap: true,
     questions: [{
       type: 'checkbox',
       name: 'presets',
