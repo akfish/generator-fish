@@ -15,8 +15,8 @@ module.exports = Fish.buildTask('browserify', ["browserify","vinyl-source-stream
     questions: [
       {
         type: 'input',
-        name: 'bundleName',
-        message: 'bundleName',
+        name: '_bundleName',
+        message: 'Bundle name',
         validate: validator.nonEmpty,
         default: 'app'
       },
@@ -46,7 +46,7 @@ module.exports = Fish.buildTask('browserify', ["browserify","vinyl-source-stream
       },
       {
         type: 'confirm',
-        name: 'uglify',
+        name: '_uglify',
         message: 'Uglify',
         default: true
       }

@@ -24,13 +24,21 @@ module.exports = Fish.buildTask('es6', ["gulp-babel"],
           "react"
         ],
         default: ["es2015"]
+      },
+      {
+        type: 'confirm',
+        name: '_useBabelRc',
+        message: 'Use .babelrc file',
+        default: true
       }
     ]
   },
   {
     _doWriting: function() {
-      var babelOpts = this.gulpfile.getConfig('es6', false).opts
-      this.fs.writeJSON(this.destinationPath('.babelrc'), babelOpts);
+      if (this.props._useBabelRc) {
+        var babelOpts = this.gulpfile.getConfig('es6', false).opts
+        this.fs.writeJSON(this.destinationPath('.babelrc'), babelOpts);
+      }
     },
     _doInstall: function() {
       var deps = this.props.presets.map(function(s) { return "babel-preset-" + s});

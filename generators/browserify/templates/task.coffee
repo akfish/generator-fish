@@ -7,8 +7,8 @@ browserify = heap.convert((opts) ->
 cfg = config.browserify
 gulp.task cfg.taskName,
   browserify(cfg.opts)
-    .then(source("#{cfg.opts.bundleName}.js"))
-    .then(buffer()).dest(cfg.dst)<% if (uglify) { %>
+    .then(source("#{cfg._bundleName}.js"))
+    .then(buffer()).dest(cfg.dst)<% if (_uglify) { %>
     .next(uglify()).with(heap.sourcemaps()).if(cfg.sourceMap)
-    .rename("#{cfg.opts.bundleName}.min.js")
+    .rename("#{cfg._bundleName}.min.js")
     .write(cfg.dst)<% } %>
