@@ -1,6 +1,8 @@
 # require something
 
-gulp.task config.<%= name %>.taskName,
-  <%= name %>(config.<%= name %>.src, config.<%= name %>.dst, config.<%= name %>.opts)<% if (supportSourceMap) { %>
-    .with(heap.sourcemaps()).if(config.<%= name %>.sourceMap)
-  <% } %>
+module.exports = (profile = "default") ->
+  cfg = config["<%= name %>:" + profile]
+  gulp.task cfg.taskName,
+    <%= name %>(cfg.src, cfg.dst, cfg.opts)<% if (supportSourceMap) { %>
+      .with(heap.sourcemaps()).if(cfg.sourceMap)
+    <% } %>

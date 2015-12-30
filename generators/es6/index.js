@@ -36,7 +36,7 @@ module.exports = Fish.buildTask('es6', ["gulp-babel"],
   {
     _doWriting: function() {
       if (this.props._useBabelRc) {
-        var babelOpts = this.gulpfile.getConfig('es6', false).opts
+        var babelOpts = this.gulpfile.getConfig('es6', this.profile, false).opts
         this.fs.writeJSON(this.destinationPath('.babelrc'), babelOpts);
       }
     },

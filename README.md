@@ -95,12 +95,22 @@ Notes:
 
 #### Modify the generated `generators/#new#/templates/task.coffee`
 
+A typical `task.coffee` should be like this:
+
+```coffee
+# require dependencies
+module.exports = (profile = 'default') ->
+  cfg = config["name:#{profile}"]
+
+  # gulp.task
+```
 * It's a template file with `this.props` as its parameters
+* It should expose a function that takes `profile` name as the only option
 * Following objects are exposed to global in `gulpfile.coffee`:
   - `gulp`
   - `heap` - `gulp-heap`
   - `config` - all configurations
-* Task specific configurations are stored in `config[name]`
+* Task specific configurations are stored in `config[name:profile]`
 
 ## License
 

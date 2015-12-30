@@ -1,5 +1,7 @@
 coffee = heap.require('gulp-coffee')
 
-gulp.task config.coffee.taskName,
-  coffee(config.coffee.src, config.coffee.dst, config.coffee.opts)
-    .with(heap.sourcemaps()).if(config.coffee.sourceMap)
+module.exports = (profile = "default") ->
+  cfg = config["coffee:" + profile]
+  gulp.task cfg.taskName,
+    coffee(cfg.src, cfg.dst, cfg.opts)
+      .with(heap.sourcemaps()).if(cfg.sourceMap)

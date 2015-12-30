@@ -1,5 +1,7 @@
 babel = heap.require('gulp-babel')
 
-gulp.task config.es6.taskName,
-  babel(config.es6.src, config.es6.dst<% if (!_useBabelRc) { %>, config.es6.opts<% } %>)
-    .with(heap.sourcemaps()).if(config.es6.sourceMap)
+module.exports = (profile = "default") ->
+  cfg = config["es6:" + profile]
+  gulp.task cfg.taskName,
+    babel(cfg.src, cfg.dst, if cfg._useBabelRc then null else cfg.opts)
+      .with(heap.sourcemaps()).if(cfg.sourceMap)

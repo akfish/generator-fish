@@ -1,4 +1,6 @@
 mocha = heap.require('gulp-mocha')
 
-gulp.task config.mocha.taskName,
-  mocha(config.mocha.src, config.mocha.dst, config.mocha.opts)
+module.exports = (profile = "default") ->
+  cfg = config["mocha:" + profile]
+  gulp.task cfg.taskName,
+    mocha(cfg.src, cfg.dst, cfg.opts)
