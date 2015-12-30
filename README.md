@@ -20,6 +20,88 @@ yo fish
 
 Yeoman has a heart of gold. He&#39;s a person with feelings and opinions, but he&#39;s very easy to work with. If you think he&#39;s too opinionated, he can be easily convinced. Feel free to [learn more about him](http://yeoman.io/).
 
+## Development
+
+### Add New Task
+
+#### Run the internal `fish:fish` generator in `generator-fish` project folder:
+
+```bash
+yo fish:fish
+```
+
+#### Modify the generated `generators/#new#/index.js`
+```js
+'use strict';
+var yeoman = require('yeoman-generator');
+var chalk = require('chalk');
+var Fish = require('../../lib/base');
+
+module.exports = Fish.buildTask('coffee', ['gulp-coffee'],
+  {
+    defaultSrc: "./coffee/**/*.coffee",
+    defaultDst: "./lib",
+    ignoreSrc: false, // toggle `src` question
+    ignoreDst: false, // toggle `dst` question
+    supportSourceMap: true, // toggle `sourceMap` question
+    questions: [
+      {
+        type: 'confirm',
+        name: 'bare',
+        message: '--bare',
+        default: true
+      },
+    ]
+  },
+  {
+    // TODO: custom prototype methods
+  });
+```
+
+When running, the prompts will generate `props` in its 'flatten' form:
+```js
+{
+  src: '',
+  dst: '',
+  // other fields
+}
+```
+
+When stored to `gulpconfig.json` under the task's namespace, fields other than generic and private ones will be moved to `opts` field.
+```js
+{
+  src: '',
+  dst: '',
+  // other fields
+  opts: {
+    // other fields
+  }
+}
+```
+
+The `opts` field will be used as gulp plugin options.
+
+Notes:
+* Generic questions will be asked before custom questions:
+  - `taskName`
+  - `src`, toggled by `ignoreSrc`
+  - `dst`, toggled by `ignoreDst`
+  - `sourceMap`, toggled by `supportSourceMap`
+* Questions with `_` as prefix in their names are private.
+* Special custom prototype methods:
+  - `_doPrompt` - called right after `this.props` is set but before it's stored to `gulpconfig`
+  - `_doWriting` - called after `gulpfile.coffee`, `gulpconfig.json` and task templates are written
+  - `_doInstall` - called after `fish:app` and task's dependencies are installed
+
+#### Modify the generated `generators/#new#/templates/task.coffee`
+
+* It's a template file with `this.props` as its parameters
+* Following objects are exposed to global in `gulpfile.coffee`:
+  - `gulp`
+  - `heap` - `gulp-heap`
+  - `config` - all configurations
+* Task specific configurations are stored in `config[name]`
+
 ## License
 
 MIT © [akfish]()
