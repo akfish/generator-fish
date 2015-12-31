@@ -53,9 +53,10 @@ module.exports = Fish.buildTask('browserify', ["browserify","vinyl-source-stream
     ]
   },
   {
-    _doPrompt: function() {
+    _doPrompt: function(done) {
       // Set debug flag to get source map
       this.props.debug = this.props.sourceMap;
+      done();
     },
     _doInstall: function() {
       // Install transforms
