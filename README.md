@@ -16,6 +16,41 @@ Then generate your new project:
 yo fish
 ```
 
+## Usage
+
+In your project folder, run:
+```bash
+yo fish
+```
+Then follow the instructions.
+
+Select tasks via CLI argument:
+```bash
+yo fish --coffee --mocha
+```
+
+Or run in standalone mode:
+```bash
+yo fish:coffee
+```
+
+Supported gulp tasks:
+* coffee
+* mocha
+* es6(babel)
+* browserify
+* watch
+* clean
+* copy
+
+(Optional) You can override configurations with CLI arguments passed to `gulp` command.
+
+Run:
+```bash
+yo fish:cli
+```
+To configure CLI mapping.
+
 ## Getting To Know Yeoman
 
 Yeoman has a heart of gold. He&#39;s a person with feelings and opinions, but he&#39;s very easy to work with. If you think he&#39;s too opinionated, he can be easily convinced. Feel free to [learn more about him](http://yeoman.io/).
