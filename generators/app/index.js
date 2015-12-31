@@ -40,6 +40,6 @@ module.exports = Fish.extend({
   },
 
   install: function () {
-    this.npmInstall(['gulp', 'gulp-heap@latest'], { 'saveDev': true });
+    this.npmInstall(['gulp', 'gulp-heap@latest', 'coffee-script'], { 'saveDev': true });
   }
 });
